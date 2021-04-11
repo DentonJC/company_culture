@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import os
 import pickle
 
@@ -98,15 +100,16 @@ study = optuna.create_study(
     storage="sqlite:///search/res.db",
     load_if_exists=True,
 )
-study.optimize(
-    lambda trial: objective(trial, X_train, X_test, y_train, y_test),
-    n_trials=1,
-    show_progress_bar=True,
-)
-df = study.trials_dataframe(attrs=("number", "value", "params", "state"))
-df.to_csv("search/res.csv", sep="\t")
 
-# open text file in read mode
+# Hyperparameters search
+# study.optimize(
+#     lambda trial: objective(trial, X_train, X_test, y_train, y_test),
+#     n_trials=1,
+#     show_progress_bar=True,
+# )
+# df = study.trials_dataframe(attrs=("number", "value", "params", "state"))
+# df.to_csv("search/res.csv", sep="\t")
+
 letter_file = open("data/letter.txt", "r")
 letter = letter_file.read().replace("\n", " ")
 letter_file.close()
@@ -116,6 +119,7 @@ model.fit(X, y)
 preds = model.predict(vect.transform([letter]))
 
 similarity = cosine_similarity(y, preds).flatten()
-idx = sorted(range(len(similarity)), key=lambda i: similarity[i])[-10:]
-print(np.array(similarity)[idx])
-print(np.array(companies_names)[idx])
+idx = sorted(range(len(similarity)), key=lambda i: similarity[i], reverse=True)[:10]
+print('Cultural match:')
+for i, company in enumerate(np.array(companies_names)[idx]): 
+    print(str(i+1) + '. ' + company)

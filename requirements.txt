@@ -1,0 +1,9 @@
+nltk==3.5
+optuna==2.2.0
+scikit_multilearn==0.2.0
+wikipedia==1.4.0
+tqdm==4.54.1
+pandas==1.0.5
+numpy==1.19.2
+xgboost==1.0.2
+scikit_learn==0.24.1

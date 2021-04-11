@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import os
 import pickle
 import time
@@ -73,6 +75,7 @@ letter_file.close()
 similarity = cosine_similarity(
     vect.transform(companies), vect.transform([letter])
 ).flatten()
-idx = sorted(range(len(similarity)), key=lambda i: similarity[i])[-10:]
-print(np.array(similarity)[idx])
-print(np.array(companies_names)[idx])
+idx = sorted(range(len(similarity)), key=lambda i: similarity[i], reverse=True)[:10]
+print('Cultural match:')
+for i, company in enumerate(np.array(companies_names)[idx]): 
+    print(str(i+1) + '. ' + company)
