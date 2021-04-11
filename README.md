@@ -2,7 +2,7 @@
 
 ## About
 
-I collected information about companies and applied machine learning methods to find the one that best suits your corporate culture. The first part of project just compares your cover letter with company descriptions on Wikipedia and returns the most relevant ones. You can use naive cosine similarity (it may well be the most reliable tool) or use a model that predicts your corporate culture and compares with the corporate cultures of the company according to the [Culture 500](https://sloanreview.mit.edu/culture500/).
+I collected information about companies and applied machine learning methods to find the one that best suits your company culture. The first part of project just compares your cover letter with companies descriptions on Wikipedia and returns the most relevant ones. You can use naive cosine similarity (it may well be the most reliable tool) or use a model that predicts your corporate culture and compares with the corporate culture of the company according to the [Culture 500](https://sloanreview.mit.edu/culture500/).
 Culture 500 is the central dataset for both approaches. 
 
 ### Structure
